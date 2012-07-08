@@ -97,7 +97,7 @@ function selected_track_changed()
   end
 
   -- Collapses any ancestors of the last track that aren't shared if coming from the right
-  if not has_same_parent(track.index, last_track_index) then
+  if not has_same_parent(track.index, last_track_index) and song.tracks[last_track_index].group_parent then
     if track.index < last_track_index or last_track_index == 1 then
       -- Disables notifiers to avoid a notifier feedback loop
       remove_notifiers()
@@ -111,7 +111,7 @@ function selected_track_changed()
     end
   end
 
-  -- Expands current track if it's contracted
+  -- Expands current group if it's contracted
   if is_group_track(track.index) then
     track.group_collapsed = false
   end
