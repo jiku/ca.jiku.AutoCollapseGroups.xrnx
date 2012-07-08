@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RenoiseScriptingTool doc_version="0">
+  <ApiVersion>3</ApiVersion>
+  <AutoUpgraded>true</AutoUpgraded>
+  <Id>ca.jiku.AutoCollapseGroups</Id>
+  <Version>0.1</Version>
+  <Author>B.E. Henriksen (e@jiku.ca)</Author>
+  <Homepage>http://jiku.ca</Homepage>
+  <Name>Auto-collapse Groups</Name>
+  <Category>Interface</Category>
+  <Description>Auto-collapses group tracks. Complements the existing, native auto-collapsing feature for sequencer tracks.</Description>
+</RenoiseScriptingTool>
