@@ -19,7 +19,7 @@ local last_track_index = nil
 -- Adds index property to all tracks (i.e. taktik's fun and sneaky way)
 local index_property = property(function(self)
   for index, track in ipairs(renoise.song().tracks) do
-    if (rawequal(self, track)) then 
+    if (rawequal(self, track)) then
       return index
     end
   end
@@ -133,21 +133,24 @@ end
 
 -- Selects the first and most distant descendant of a group
 function goto_first_and_most_distant_descendant(_index)
-    local first_and_most_distant_descendant_index = nil
+  local first_and_most_distant_descendant_index = nil
+  local first_child_index = song.tracks[_index].children[1]
 
-    if is_group_track(song.tracks[_index].children[1]) then
-      local child_index = song.tracks[_index].children[1]
-      local potential_parent = song.tracks[child_index]
+  if first_child_index then
+    if is_group_track(first_child_index) then
+      local potential_parent = song.tracks[first_child_index]
 
       while is_group_track(potential_parent.children[1]) do
         potential_parent = song.tracks[potential_parent.children[1]]
       end
 
       first_and_most_distant_descendant_index = potential_parent.children[1]
-    elseif not is_group_track(song.tracks[_index].children[1]) then
-      first_and_most_distant_descendant_index = song.tracks[_index].children[1]
+    elseif not is_group_track(first_child_index) then
+      first_and_most_distant_descendant_index = first_child_index
     end
+
     goto_track(first_and_most_distant_descendant_index)
+  end
 end
 
 
